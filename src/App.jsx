@@ -8,7 +8,9 @@ function App() {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
-    const socket = io("http://localhost:5000", { transports: ["websocket"] });
+    const socket = io("https://real-time-app-wuag.onrender.com", {
+      transports: ["websocket"],
+    });
     socket.on("connect", () => {
       setSocketId(socket.id);
       socket.on("message", (message) => {
@@ -23,7 +25,7 @@ function App() {
 
   const sendMessage = (e) => {
     e.preventDefault();
-    const socket = io("http://localhost:5000", { transports: ["websocket"] });
+    const socket = io("https://real-time-app-wuag.onrender.com", { transports: ["websocket"] });
     socket.emit("user-message", messageRef.current.value);
   };
 
